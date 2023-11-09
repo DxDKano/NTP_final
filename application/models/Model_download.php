@@ -1,5 +1,9 @@
 <?php
 class Model_download extends CI_Model {
+    private $rowtp=27;
+    private $rowtrk=38;
+    private $rowikt=64;
+    private $rowtpr=37;
 
 	public function __construct()
 	{
@@ -46,7 +50,7 @@ class Model_download extends CI_Model {
             if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
                 $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
             }
-            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,27);
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtp);
         }
         return $rs;
 
@@ -64,7 +68,7 @@ class Model_download extends CI_Model {
                                         AND a.id_kec=b.id_kec 
                                         AND a.id_desa=b.id_desa 
                                         AND a.no_ruta=b.no_ruta
-                WHERE a.tahun=2022
+                WHERE a.tahun=?
                 ORDER BY b4_k1
 		";
         $hasil = $this->db->query($SQL1,array(intval($tahun)));
@@ -73,7 +77,7 @@ class Model_download extends CI_Model {
             if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
                 $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
             }
-            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,27);
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtp);
         }
         return $rs;
 
@@ -91,7 +95,7 @@ class Model_download extends CI_Model {
                                         AND a.id_kec=b.id_kec 
                                         AND a.id_desa=b.id_desa 
                                         AND a.no_ruta=b.no_ruta
-                WHERE a.tahun=2022
+                WHERE a.tahun=?
                 ORDER BY b4f_k1
 		";
         $hasil = $this->db->query($SQL1,array(intval($tahun)));
@@ -100,7 +104,7 @@ class Model_download extends CI_Model {
             if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
                 $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
             }
-            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,27);
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtp);
         }
         return $rs;
 
@@ -118,7 +122,7 @@ class Model_download extends CI_Model {
                                         AND a.id_kec=b.id_kec 
                                         AND a.id_desa=b.id_desa 
                                         AND a.no_ruta=b.no_ruta
-                WHERE a.tahun=2022
+                WHERE a.tahun=?
                 ORDER BY b5_k1
 		";
         $hasil = $this->db->query($SQL1,array(intval($tahun)));
@@ -127,7 +131,7 @@ class Model_download extends CI_Model {
             if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
                 $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
             }
-            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,27);
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtp);
         }
         return $rs;
 
@@ -145,7 +149,7 @@ class Model_download extends CI_Model {
                                         AND a.id_kec=b.id_kec 
                                         AND a.id_desa=b.id_desa 
                                         AND a.no_ruta=b.no_ruta
-                WHERE a.tahun=2022
+                WHERE a.tahun=?
                 ORDER BY b6_k1
 		";
         $hasil = $this->db->query($SQL1,array(intval($tahun)));
@@ -154,17 +158,17 @@ class Model_download extends CI_Model {
             if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
                 $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
             }
-            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,27);
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtp);
         }
         return $rs;
 
     }
 
-    public function data_tpr($tahun)
+    public function data_trk($tahun)
     {
         $SQL1="
 		SELECT *
-                FROM sub_tp 
+                FROM sub_trk 
                 WHERE tahun=? 
 		";
         $hasil = $this->db->query($SQL1,array(intval($tahun)));
@@ -174,6 +178,450 @@ class Model_download extends CI_Model {
                 $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
             }
             $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = $item;
+        }
+        return $rs;
+
+    }
+
+    public function data_trk_blok3a($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+                `b3a_k1`, `b3a_k2`, `b3a_k3`, `b3a_k4`, `b3a_k5`, `b3a_k6`, `b3a_r1_k3`, `b3a_r1_k4`, `b3a_r2_k3`, `b3a_r2_k4`, `b3a_r3_k3`, `b3a_r3_k4`, `b3a_r4_k3`, `b3a_r4_k4`, `b3a_r5_k3`, `b3a_r5_k4`, `b3a_r6_k3`, `b3a_r6_k4`, `b3a_r7_k3`, `b3a_r7_k4`, `b3a_r8_k3`, `b3a_r9_k3`, `b3a_r9_k4`, `b3a_r10_k3`, `b3a_r10_k4`, `b3a_r11_k4`, `b3a_r12_k4`
+                FROM sub_trk a 
+                LEFT JOIN sub_trk_blok3a b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b3a_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtrk);
+        }
+        return $rs;
+
+    }
+
+    public function data_trk_blok3b($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+                `b3b_k1`, `b3b_k2A`, `b3b_k2`, `b3b_k3`, `b3_k4`, `b3_k5`, `b3_k6`, `b3_k7`, `b3_k8`, `b3_k9`, `b3_k10`
+                FROM sub_trk a 
+                LEFT JOIN sub_trk_blok3b b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b3b_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtrk);
+        }
+        return $rs;
+
+    }
+
+    public function data_trk_blok4($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+                `b4_k1`, `b4_k2`, `b4_k3`, `b4_k4`, `b4_k5`, `b4_k6`
+                FROM sub_trk a 
+                LEFT JOIN sub_trk_blok4 b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b4_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtrk);
+        }
+        return $rs;
+
+    }
+
+    public function data_trk_blok5($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+                `b5_k1`, `b5_k2`, `b5_k3`, `b5_k4`, `b5_k5`, `b5_k6`, `b5_k7`
+                FROM sub_trk a 
+                LEFT JOIN sub_trk_blok5 b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b5_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtrk);
+        }
+        return $rs;
+
+    }
+
+    public function data_trk_blok6($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+                `b6_k1`, `b6_k2`, `b6_k3`, `b6_k4`, `b6_k5`, `b6_k6`
+                FROM sub_trk a 
+                LEFT JOIN sub_trk_blok6 b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b6_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtrk);
+        }
+        return $rs;
+
+    }
+
+    public function data_ikt($tahun)
+    {
+        $SQL1="
+		SELECT *
+                FROM sub_ikt 
+                WHERE tahun=? 
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = $item;
+        }
+        return $rs;
+
+    }
+
+    public function data_ikt_blok4($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+                `b4_k1`, `b4_k2`, `b4_k3`, `b4_k4`, `b4_k5`, `b4_k6`, `b4_k7`, `b4_k8`
+                FROM sub_ikt a 
+                LEFT JOIN sub_ikt_blok4 b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b4_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowikt);
+        }
+        return $rs;
+
+    }
+
+    public function data_ikt_blok5($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+                `b5_k1`, `b5_k2`, `b5_k3`, `b5_k4`, `b5_k5`, `b5_k6`
+                FROM sub_ikt a 
+                LEFT JOIN sub_ikt_blok5 b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b5_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowikt);
+        }
+        return $rs;
+
+    }
+
+    public function data_ikt_blok5d($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+                `b5_k1`, `b5_k2`, `b5_k3`, `b5_k4`, `b5_k5`, `b5_k6`, `b5_k7`
+                FROM sub_ikt a 
+                LEFT JOIN sub_ikt_blok5d b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b5_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowikt);
+        }
+        return $rs;
+
+    }
+
+    public function data_ikt_blok6($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+                `b6_k1`, `b6_k2`, `b6_k3`, `b6_k4`, `b6_k5`, `b6_k6`, `b6_k7`
+                FROM sub_ikt a 
+                LEFT JOIN sub_ikt_blok6 b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b6_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowikt);
+        }
+        return $rs;
+
+    }
+
+    public function data_ikt_blok7($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+                `b7_k1`, `b7_k2`, `b7_k3`, `b7_k4`, `b7_k5`, `b7_k6`
+                FROM sub_ikt a 
+                LEFT JOIN sub_ikt_blok7 b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b7_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowikt);
+        }
+        return $rs;
+
+    }
+
+    public function data_tpr($tahun)
+    {
+        $SQL1="
+		SELECT *
+                FROM sub_tpr
+                WHERE tahun=? 
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = $item;
+        }
+        return $rs;
+
+    }
+
+    public function data_tpr_blok3($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+                `b3_k1`, `b3_k2A`, `b3_k2`, `b3_k3`, `b3_k4`, `b3_k5`, `b3_k6`, `b3_k7`, `b3_k8`, `b3_k9`, `b3_k10`,
+		       `b3_k11`, `b3_k12`, `b3_k13`, `b3_k14`
+                FROM sub_tpr a 
+                LEFT JOIN sub_tpr_blok3 b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b3_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtpr);
+        }
+        return $rs;
+
+    }
+
+    public function data_tpr_blok4($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+               `b4_k1`, `b4_k2`, `b4_k3`, `b4_k4`, `b4_k5`, `b4_k6`
+                FROM sub_tpr a 
+                LEFT JOIN sub_tpr_blok4 b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b4_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtpr);
+        }
+        return $rs;
+
+    }
+
+    public function data_tpr_blok4f($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+               `b4f_k1`, `b4f_k2`, `b4f_k3`, `b4f_k4`, `b4f_k5`, `b4f_k6`, `b4f_k7`
+                FROM sub_tpr a 
+                LEFT JOIN sub_tpr_blok4f b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b4f_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtpr);
+        }
+        return $rs;
+
+    }
+
+    public function data_tpr_blok5($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+               `b5_k1`, `b5_k2`, `b5_k3`, `b5_k4`, `b5_k5`, `b5_k6`, `b5_k7`
+                FROM sub_tpr a 
+                LEFT JOIN sub_tpr_blok5 b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b5_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtpr);
+        }
+        return $rs;
+
+    }
+
+    public function data_tpr_blok6($tahun)
+    {
+        $SQL1="
+		SELECT a.*, 
+               `b6_k1`, `b6_k2`, `b6_k3`, `b6_k4`, `b6_k5`, `b6_k6`
+                FROM sub_tpr a 
+                LEFT JOIN sub_tpr_blok6 b ON a.tahun=b.tahun 
+                                        AND a.id_prov=b.id_prov 
+                                        AND a.id_kab=b.id_kab 
+                                        AND a.id_kec=b.id_kec 
+                                        AND a.id_desa=b.id_desa 
+                                        AND a.no_ruta=b.no_ruta
+                WHERE a.tahun=?
+                ORDER BY b6_k1
+		";
+        $hasil = $this->db->query($SQL1,array(intval($tahun)));
+        $rs = array();
+        foreach ($hasil->result_array() as $item){
+            if(!isset($rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']])){
+                $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']] = array();
+            }
+            $rs[$item['tahun'].$item['id_prov'].$item['id_kab'].$item['id_kec'].$item['id_desa'].$item['no_ruta']][] = array_splice($item,$this->rowtpr);
         }
         return $rs;
 

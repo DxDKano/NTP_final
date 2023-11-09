@@ -7,6 +7,10 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Download extends CI_Controller {
+    private $rowtp=27;
+    private $rowtrk=38;
+    private $rowikt=64;
+    private $rowtpr=37;
 
   public function __construct() {
 		parent::__construct();
@@ -75,6 +79,8 @@ class Download extends CI_Controller {
       $activeWorksheet = $spreadsheet->getActiveSheet();
       $baris=2;
 
+      $data = array();
+      $tmp = array();
 
     if ($subsektor == "1") {
         $activeWorksheet->setTitle("TP");
@@ -85,8 +91,6 @@ class Download extends CI_Controller {
         $blok5= $this->Model_download->data_tp_blok5($tahun);
         $blok6= $this->Model_download->data_tp_blok6($tahun);
 
-        $data = array();
-        $tmp = array();
         foreach ($blok as $key=>$value){
             $tmp = array(
                 "inti"=>$value,
@@ -111,50 +115,143 @@ class Download extends CI_Controller {
             }
         }
 
-        $baris=2;
-        $no=1;
+    }elseif ($subsektor == "3"){//tpr perkebunan
+        $activeWorksheet->setTitle("TPR");
+        $blok= $this->Model_download->data_tpr($tahun);
+        $blok3= $this->Model_download->data_tpr_blok3($tahun);
+        $blok4= $this->Model_download->data_tpr_blok4($tahun);
+        $blok4f= $this->Model_download->data_tpr_blok4f($tahun);
+        $blok5= $this->Model_download->data_tpr_blok5($tahun);
+        $blok6= $this->Model_download->data_tpr_blok6($tahun);
 
-        foreach ($data as $item) {//ini kues
-            $kolom = 1;
-            $barismax=$baris;
-
-            $activeWorksheet->setCellValue("A$baris" , ($no));
-            foreach ($item as $key => $value) {//ini blok
-                $tmpbaris=$baris;//buat balikin ke baris paling atas di kuesionernya
-                foreach ($value as $key2 => $value2) {//ini komoditas
-                    $tmpkolom = $kolom;
-                    foreach ($value2 as $key3 => $value3) {//ini kolom
-                        $activeWorksheet->setCellValueExplicit($this->getNameColumn($tmpkolom) . $tmpbaris, $value3, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
-
-                        $tmpkolom++;
-                    }
-                    $tmpbaris++;
-                    $barismax = $tmpbaris>$barismax?$tmpbaris:$barismax;
-                }
-                $kolom = $tmpkolom;
-            }
-            $baris=$barismax;
-            $no++;
+        foreach ($blok as $key=>$value){
+            $tmp = array(
+                "inti"=>$value,
+                "blok3"=>$blok3[$key],
+                "blok4"=>$blok4[$key],
+                "blok4f"=>$blok4f[$key],
+                "blok5"=>$blok5[$key],
+                "blok6"=>$blok6[$key]
+            );
+            $data[$key] = $tmp;
         }
 
 
+        $activeWorksheet->setCellValue('A1' , "NO");
+        $kolom = 1;
+        $baris=1;
+        foreach ($tmp as $key=>$value){//ini blok
+            $value2 = $value[0];
+            foreach ($value2 as $key3=>$value3) {
+                $activeWorksheet->setCellValue($this->getNameColumn($kolom) . $baris, $key3);
+                $kolom++;
+            }
+        }
+    }elseif ($subsektor == "4"){//trk peternakan
+        $activeWorksheet->setTitle("TRK");
+        $blok= $this->Model_download->data_trk($tahun);
+        $blok3a= $this->Model_download->data_trk_blok3a($tahun);
+        $blok3b= $this->Model_download->data_trk_blok3b($tahun);
+        $blok4= $this->Model_download->data_trk_blok4($tahun);
+        $blok5= $this->Model_download->data_trk_blok5($tahun);
+        $blok6= $this->Model_download->data_trk_blok6($tahun);
+
+        foreach ($blok as $key=>$value){
+            $tmp = array(
+                "inti"=>$value,
+                "blok3a"=>$blok3a[$key],
+                "blok3b"=>$blok3b[$key],
+                "blok4"=>$blok4[$key],
+                "blok5"=>$blok5[$key],
+                "blok6"=>$blok6[$key]
+            );
+            $data[$key] = $tmp;
+        }
 
 
-        //echo json_encode($data);
-        $writer = new Xlsx($spreadsheet);
-        $name="file/".time().".xlsx";
-        $writer->save($name);
-        //header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        $data = file_get_contents($name);
+        $activeWorksheet->setCellValue('A1' , "NO");
+        $kolom = 1;
+        $baris=1;
+        foreach ($tmp as $key=>$value){//ini blok
+            $value2 = $value[0];
+            foreach ($value2 as $key3=>$value3) {
+                $activeWorksheet->setCellValue($this->getNameColumn($kolom) . $baris, $key3);
+                $kolom++;
+            }
+        }
+    }elseif ($subsektor == "5"){//ikt ikan tangkap
+        $activeWorksheet->setTitle("IKT");
+        $blok= $this->Model_download->data_ikt($tahun);
+        $blok4= $this->Model_download->data_ikt_blok4($tahun);
+        $blok5= $this->Model_download->data_ikt_blok5($tahun);
+        $blok5d= $this->Model_download->data_ikt_blok5d($tahun);
+        $blok6= $this->Model_download->data_ikt_blok6($tahun);
+        $blok7= $this->Model_download->data_ikt_blok7($tahun);
 
-        $base64 = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,' . base64_encode($data);
-        echo $base64;
+        foreach ($blok as $key=>$value){
+            $tmp = array(
+                "inti"=>$value,
+                "blok4"=>$blok4[$key],
+                "blok5"=>$blok5[$key],
+                "blok5d"=>$blok5d[$key],
+                "blok6"=>$blok6[$key],
+                "blok7"=>$blok7[$key]
+            );
+            $data[$key] = $tmp;
+        }
 
-        unlink($name);
 
-
+        $activeWorksheet->setCellValue('A1' , "NO");
+        $kolom = 1;
+        $baris=1;
+        foreach ($tmp as $key=>$value){//ini blok
+            $value2 = $value[0];
+            foreach ($value2 as $key3=>$value3) {
+                $activeWorksheet->setCellValue($this->getNameColumn($kolom) . $baris, $key3);
+                $kolom++;
+            }
+        }
 
     }
+
+      $baris=2;
+      $no=1;
+
+      foreach ($data as $item) {//ini kues
+          $kolom = 1;
+          $barismax=$baris;
+
+          $activeWorksheet->setCellValue("A$baris" , ($no));
+          foreach ($item as $key => $value) {//ini blok
+              $tmpbaris=$baris;//buat balikin ke baris paling atas di kuesionernya
+              foreach ($value as $key2 => $value2) {//ini komoditas
+                  $tmpkolom = $kolom;
+                  foreach ($value2 as $key3 => $value3) {//ini kolom
+                      $activeWorksheet->setCellValueExplicit($this->getNameColumn($tmpkolom) . $tmpbaris, $value3, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+
+                      $tmpkolom++;
+                  }
+                  $tmpbaris++;
+                  $barismax = $tmpbaris>$barismax?$tmpbaris:$barismax;
+              }
+              $kolom = $tmpkolom;
+          }
+          $baris=$barismax;
+          $no++;
+      }
+
+
+      //echo json_encode($data);
+      $writer = new Xlsx($spreadsheet);
+      $name="file/".time().".xlsx";
+      $writer->save($name);
+      //header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      $data = file_get_contents($name);
+
+      $base64 = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,' . base64_encode($data);
+      echo $base64;
+
+      unlink($name);
   }
 
 
